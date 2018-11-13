@@ -13,7 +13,7 @@
 
             </td>
             <td>
-                <input type="checkbox">
+                <input id="1" type="checkbox">
             </td>
             <td>
 
@@ -24,10 +24,10 @@
                 <table style="margin-left: 10px">
                     <tr>
                         <td>
-                            <input type="checkbox">
+                            <input id="2" type="checkbox">
                         </td>
                         <td>
-                            <input type="checkbox">
+                            <input id="3" type="checkbox">
                         </td>
                     </tr>
                 </table>
@@ -35,13 +35,13 @@
         </tr>
         <tr>
             <td>
-                <input type="checkbox">
+                <input id="4" type="checkbox">
             </td>
             <td>
-                <input type="checkbox">
+                <input id="5" type="checkbox" v-on:change="bim">
             </td>
             <td>
-                <input type="checkbox">
+                <input id="6" type="checkbox" v-on:change="bim">
             </td>
         </tr>
     </table>
@@ -49,8 +49,16 @@
 
 <script type="text/javascript">
     var chamboulletout = new Vue({
-        el: '#glob'
-
+        el: '#glob',
+	data: {
+		randomVar: 0
+	},
+	methods: {
+		bim: function (event) {
+			if (event.target.id==5) alert("Huy :)")
+			if (event.target.id==6) alert("Hey :)")
+		}
+	}
     })
 
 </script>
