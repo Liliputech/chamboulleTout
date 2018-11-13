@@ -41,7 +41,7 @@
                 <input id="5" type="checkbox" v-on:change="bim">
             </td>
             <td>
-                <input id="6" type="checkbox" v-on:change="bim">
+                <input id="6" type="checkbox" v-on:change="bim" v-bind:checked="check">
             </td>
         </tr>
     </table>
@@ -51,12 +51,13 @@
     var chamboulletout = new Vue({
         el: '#glob',
 	data: {
-		randomVar: 0
+		randomVar: 0,
+		check: false
 	},
 	methods: {
 		bim: function (event) {
-			if (event.target.id==5) document.getElementsByTagName("input")[0].checked=true
-			 
+			if (event.target.id==5) document.getElementsByTagName("input")[0].checked=event.target.checked
+			if (event.target.id==4) this.check=event.target.checked
 			if (event.target.id==6) alert("Hey :)")
 		}
 	}
