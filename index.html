@@ -13,7 +13,7 @@
 
             </td>
             <td>
-                <input id="1" type="checkbox">
+                <input id="1" type="checkbox" v-on:change="bim">
             </td>
             <td>
 
@@ -24,10 +24,10 @@
                 <table style="margin-left: 10px">
                     <tr>
                         <td>
-                            <input id="2" type="checkbox">
+                            <input id="2" type="checkbox" v-on:change="bim">
                         </td>
                         <td>
-                            <input id="3" type="checkbox">
+                            <input id="3" type="checkbox" v-on:change="bim">
                         </td>
                     </tr>
                 </table>
@@ -35,7 +35,7 @@
         </tr>
         <tr>
             <td>
-                <input id="4" type="checkbox">
+                <input id="4" type="checkbox" v-on:change="bim">
             </td>
             <td>
                 <input id="5" type="checkbox" v-on:change="bim">
@@ -55,7 +55,8 @@
 	},
 	methods: {
 		bim: function (event) {
-			if (event.target.id==5) alert("Huy :)")
+			if (event.target.id==5) document.getElementsByTagName("input")[0].checked=true
+			 
 			if (event.target.id==6) alert("Hey :)")
 		}
 	}
