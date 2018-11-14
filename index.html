@@ -49,18 +49,31 @@
 
 <script type="text/javascript">
     var checklist = [[1],[1,2],[1,3],[1,2,4],[1,2,3,4,5,6],[1,3,6]]
+    var lastClicked
+    var state
     var chamboulletout = new Vue({
         el: '#glob',
 	methods: {
 		bim: function (event) {
-			// Clear everything 
+			// Clear everything but the checkbox clicked
 			var all = document.getElementsByTagName("input")
 			for (i=0 ; i<all.length ; i++) {
-				all[i].checked=false
+				if (event.target.id != all[i].id) all[i].checked=false
 			}
+			
+			/*
+			This is to apply good patterns even in the event
+			where user clicks a different checkbox
+			than the previous one.
+			*/
+			if(lastClicked!=event.target && !event.target.checked){
+				state=true
+			}
+			else state=event.target.checked
 
 			// Apply tree
-			checklist[event.target.id-1].forEach(function (i) {document.getElementById(i).checked=true})
+			checklist[event.target.id-1].forEach(function (i) {document.getElementById(i).checked=state})
+			lastClicked = event.target
 		}
 	}
     })
